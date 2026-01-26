@@ -10,6 +10,6 @@
 - id: 0x5761
   en: "{:unk 03}Unequip Keychain."
   gr: "{:unk 03}Schlüsselanhänger ablegen."
-  it: "{:unk 03}Unequip Keychain."
-  fr: "{:unk 03}Unequip Keychain."
-  sp: "{:unk 03}Unequip Keychain."
+  it: "{:unk 03}Rimuovi il Keychain."
+  fr: "{:unk 03}Déséquiper le porte-clé."
+  sp: "{:unk 03}Desequipar llavero."
