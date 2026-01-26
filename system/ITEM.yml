@@ -1,0 +1,24 @@
+Items:
+- Id: 0x0310
+  Type: Keyblade
+  StatEntry: 0x0310
+  Name: 0x5760
+  Description: 0x5761
+  Slot: 314  
+  Picture: 425
+  Icon2: 0x04
+  InsertBefore: 0x0029
+Stats:
+- Id: 0x0310
+  AbilityPoints: 0
+  Attack: 0
+  Magic: 0
+  Defense: 0
+  Unknown: 0
+  IceResistance: 100
+  DarkResistance: 100
+  FireResistance: 100
+  GeneralResistance: 100
+  LightningResistance: 100
+  Unknown08: 100
+  Unknown0d: 100

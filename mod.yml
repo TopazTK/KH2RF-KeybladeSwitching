@@ -1,0 +1,53 @@
+title: Kingdom Hearts II - Keyblade Switching [Re:Fined]
+originalAuthor: TopazTK
+description: Keyblade Switching, but for Re:Fined.
+
+assets:
+
+# === The Mina Thing:tm: ===
+- name: dll/modules/ModuleRF-KeybladeSwitching.dll
+  method: copy
+  source:
+    - name: modules/ModuleRF-KeybladeSwitching.dll
+
+# === Sound Effects ===
+ 
+- name: se/zz00_keyswitch.win32.scd
+  method: copy
+  source:
+    - name: se/zz00_keyswitch.win32.scd
+
+# === Language Files ===
+
+- name: msg/us/sys.bar
+  multi:
+  method: binarc
+  source:
+  - name: sys
+    type: list
+    method: kh2msg
+    source:
+    - name: msg/sys.yml
+      language: en
+
+# === System Related Files ===
+
+- name: itempic/item-425.imd 
+  method: copy
+  source:
+    - name: itempic/item-425.imd
+
+- name: remastered/itempic/item-425.dds
+  method: copy
+  source:
+    - name: remastered/itempic/item-425.dds
+
+- name: 03system.bin
+  method: binarc
+  source:
+  - name: item
+    type: list
+    method: listpatch
+    source:
+    - name: system/ITEM.yml
+      type: item
