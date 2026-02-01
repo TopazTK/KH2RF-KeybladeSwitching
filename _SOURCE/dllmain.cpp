@@ -523,7 +523,7 @@ extern "C"
                 auto _fetchFlag = *reinterpret_cast<uint8_t*>(_fetchSora + 0x127);
 
                 // If the input is L1 + RIGHT and the debounce isn't set:
-                if ((*_hardpadInput & 0x0400) == 0x0400 && !KEYBLADE_DEBOUNCE && (_fetchFlag & 0x10) != 0x10)
+                if (!KEYBLADE_DEBOUNCE && (_fetchFlag & 0x10) != 0x10)
                 {
                     if ((*_hardpadInput & 0x0020) == 0x0020 || (*_hardpadInput & 0x0080) == 0x0080)
                     {
