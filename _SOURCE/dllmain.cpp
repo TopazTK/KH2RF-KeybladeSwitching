@@ -349,11 +349,40 @@ extern "C"
             // Calculate the maximum selection we can make.
             auto _calculateForms = _getNumBackyard(0x001A) + _getNumBackyard(0x001D) + _getNumBackyard(0x001F);
 
+            for (int i = 0; i < 5; i++)
+            {
+                auto _fetchTarget = *reinterpret_cast<uint16_t*>(_getPanacea("KEYBLADE_SWITCH") + (0x02 * i));
+
+                if (_fetchTarget == 0x0310 || _fetchTarget == 0x0000)
+                    continue;
+
+                auto _fetchKeyCount = _getNumBackyard(_fetchTarget);
+
+                if (_fetchKeyCount != 0x00)
+                    _reduceBackyard(_fetchTarget, _fetchKeyCount);
+
+                auto _fetchFormKey = *reinterpret_cast<uint16_t*>(_saveData + 0x32BC + 0x38 * (i + 1));
+
+                if (_fetchFormKey == 0x00)
+                    continue;
+
+                auto _fetchFKeyCount = _getNumBackyard(_fetchFormKey);
+
+                if (_fetchFKeyCount != 0x00)
+                    _reduceBackyard(_fetchFormKey, _fetchFKeyCount);
+            }
+
+            auto _actualKey = *reinterpret_cast<uint16_t*>(_saveData + 0x24F0);
+            auto _fetchActualKeyCount = _getNumBackyard(_actualKey);
+
+            if (_fetchActualKeyCount != 0x00)
+                _reduceBackyard(_actualKey, _fetchActualKeyCount);
+
             // If the pointer exists:
             if (_fetchSelect)
             {
                 // If the selection is in one of the weapons, we are in the correct sub-menus, and TRIANGLE is pressed and the colors did not swap yet:
-                if (((*_subMenuType == 0x02 && *_fetchSelect <= _calculateForms) || (*_subMenuType == 0x01 && *_fetchSelect == 0x00)) && (*_hardpadInput & 0x1000) && !COLOR_SWAPPED && *CURRENT_SUBMENU == 0x00)
+                if (((*_subMenuType == 0x02 && *_fetchSelect <= _calculateForms) || (*_subMenuType == 0x01 && *_fetchSelect == 0x00)) && (*_hardpadInput & 0x0200) && !COLOR_SWAPPED && *CURRENT_SUBMENU == 0x00)
                 {
                     // For every form that exists in game:
                     for (int i = 0; i < 5; i++)
@@ -427,7 +456,7 @@ extern "C"
                 }
 
                 // Otherwise, put the boolean to false.
-                else if (!(*_hardpadInput & 0x1000) && COLOR_SWAPPED)
+                else if (!(*_hardpadInput & 0x0200) && COLOR_SWAPPED)
                     COLOR_SWAPPED = false;
 
                 // If we are on sub-menu 0x02:
