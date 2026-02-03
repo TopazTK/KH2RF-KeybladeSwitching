@@ -382,7 +382,7 @@ extern "C"
             if (_fetchSelect)
             {
                 // If the selection is in one of the weapons, we are in the correct sub-menus, and TRIANGLE is pressed and the colors did not swap yet:
-                if (((*_subMenuType == 0x02 && *_fetchSelect <= _calculateForms) || (*_subMenuType == 0x01 && *_fetchSelect == 0x00)) && (*_hardpadInput & 0x0200) && !COLOR_SWAPPED && *CURRENT_SUBMENU == 0x00)
+                if (((*_subMenuType == 0x02 && *_fetchSelect <= _calculateForms) || (*_subMenuType == 0x01 && *_fetchSelect == 0x00)) && (*_hardpadInput & 0x0004) && !COLOR_SWAPPED && *CURRENT_SUBMENU == 0x00)
                 {
                     // For every form that exists in game:
                     for (int i = 0; i < 5; i++)
@@ -456,7 +456,7 @@ extern "C"
                 }
 
                 // Otherwise, put the boolean to false.
-                else if (!(*_hardpadInput & 0x0200) && COLOR_SWAPPED)
+                else if (!(*_hardpadInput & 0x0004) && COLOR_SWAPPED)
                     COLOR_SWAPPED = false;
 
                 // If we are on sub-menu 0x02:
