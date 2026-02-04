@@ -180,6 +180,11 @@ void(*ITEM_COMMIT)() = nullptr;
 
 extern "C"
 {
+    __declspec(dllexport) string RF_ExcludeFunctions()
+    {
+        return "PROCESS_FORM_KEYBLADES";
+    }
+
 	__declspec(dllexport) void RF_ModuleInit(const wchar_t* mod_path)
 	{
         wchar_t filepath[MAX_PATH];
