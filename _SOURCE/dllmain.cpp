@@ -180,9 +180,14 @@ void(*ITEM_COMMIT)() = nullptr;
 
 extern "C"
 {
-    __declspec(dllexport) string RF_ExcludeFunctions()
+    __declspec(dllexport) char* RF_ExcludeFunctions()
     {
-        return "PROCESS_FORM_KEYBLADES";
+        char* _allocChar = (char*)malloc(0x20);
+
+        fill(_allocChar, _allocChar + 0x20, 0x00);
+        memcpy(_allocChar, "PROCESS_FORM_KEYBLADES", 22);
+
+        return _allocChar;
     }
 
 	__declspec(dllexport) void RF_ModuleInit(const wchar_t* mod_path)
